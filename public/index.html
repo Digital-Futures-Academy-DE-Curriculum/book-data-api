@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>books_to_scrape API</title>
+    </head>
+    <body>
+        <h1>Books to Scrape API</h1>
+        <p>
+            This is a RESTful API using information previously scraped book
+            information from the
+            <a href="http://books.toscrape.com/" _target="blank" noreferrer
+                >Books to Scrape</a
+            >
+            website.
+        </p>
+        <p>The routes available in this API are:</p>
+        <ul>
+            <li>
+                <code><a href="/categories">/categories</a></code>
+                <ul>
+                    <li>
+                        Returns the whole collection of categories with all of
+                        the stored data
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code><a href="/categories/books">/categories/books</a></code>
+                <ul>
+                    <li>
+                        Returns an object where the keys are the category names
+                        and the values are an object that contains the number of
+                        books in the category and an array of all of the books
+                        in the category
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code
+                    ><a href="/categories/books/count"
+                        >/categories/books/count</a
+                    ></code
+                >
+                <ul>
+                    <li>
+                        Returns an object with keys of the category names and
+                        the values are the number of books in the category
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code
+                    ><a href="/categories/books/prices"
+                        >/categories/books/prices</a
+                    ></code
+                >
+                <ul>
+                    <li>
+                        Returns an object with keys of the category names and
+                        values of the number of books and an array that contains
+                        the price of each book
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code
+                    ><a href="/category/672e3538a2a5c1a72454d835"
+                        >/category/&lt;category_id&gt;</a
+                    ></code
+                >
+                <ul>
+                    <li>
+                        Returns an object with a key of the category name and
+                        the value of the number of books - this will match the
+                        category that has the <code>id</code> supplied
+                    </li>
+                    <li>
+                        In this case <code>672e3538a2a5c1a72454d835</code> which
+                        is the ID for <strong>Philosophy</strong>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code
+                    ><a href="/category/672e3538a2a5c1a72454d835/books"
+                        >/categories/&lt;category_id&gt;/books</a
+                    ></code
+                >
+                <ul>
+                    <li>
+                        Returns an object with a key that represents the
+                        category name and an object that contains the number of
+                        books in the category and an array of the books in the
+                        category
+                    </li>
+                    <li>
+                        In this case <code>672e3538a2a5c1a72454d835</code> which
+                        is the ID for <strong>Philosophy</strong>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code
+                    ><a href="/category/672e3538a2a5c1a72454d835/books/prices"
+                        >/categories/&lt;category_id&gt;/books/prices</a
+                    ></code
+                >
+                <ul>
+                    <li>
+                        Returns an object with a key that represents the
+                        category name and an object that contains the number of
+                        books in the category and an array of the book prices in
+                        the category
+                    </li>
+                    <li>
+                        In this case <code>672e3538a2a5c1a72454d835</code> which
+                        is the ID for <strong>Philosophy</strong>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

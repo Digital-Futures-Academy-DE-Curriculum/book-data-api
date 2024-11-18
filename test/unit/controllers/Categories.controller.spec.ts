@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import { describe, it, beforeEach } from "mocha";
 import sinon, { assert } from "sinon";
 
-import ICategory from "../../src/models/ICategory";
-import CategoriesController from "../../src/controllers/Categories.controller";
-import CategoriesService from "../../src/services/Categories.service";
-import testData from "../data/testData";
+import ICategory from "../../../src/models/ICategory";
+import CategoriesController from "../../../src/controllers/Categories.controller";
+import CategoriesService from "../../../src/services/Categories.service";
+import testData from "../../data/testData";
 
 describe("CategoriesController Tests", () => {
     let controller: CategoriesController;

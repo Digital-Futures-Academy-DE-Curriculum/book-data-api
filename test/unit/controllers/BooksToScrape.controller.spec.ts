@@ -5,8 +5,8 @@ import path from "path";
 import sinon, { assert } from "sinon";
 import { fileURLToPath } from "url";
 
-import BooksToScrapeController from "../../src/controllers/BooksToScrape.controller";
-import ErrorMessages from "../../src/constants/ErrorMessages";
+import BooksToScrapeController from "../../../src/controllers/BooksToScrape.controller";
+import ErrorMessages from "../../../src/constants/ErrorMessages";
 
 describe("BooksToScrapeController Tests", () => {
     let controller: BooksToScrapeController;
@@ -29,7 +29,7 @@ describe("BooksToScrapeController Tests", () => {
             // Arrange
             const __filename = fileURLToPath(import.meta.url);
             const __dirname = path.dirname(__filename);
-            const HOME_PAGE_PATH = "../../public/index.html";
+            const HOME_PAGE_PATH = "../../../public/index.html";
             const filePath = path.join(__dirname, HOME_PAGE_PATH);
             sinon.stub(fs, "access").resolves();
             // Act

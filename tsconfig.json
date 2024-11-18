@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es2022",
         "module": "es2022",
         "strict": true,
         "esModuleInterop": true,
@@ -10,7 +10,9 @@
         "rootDir": "./",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "types": ["node"]
+        "types": ["node"],
+        "allowSyntheticDefaultImports": true,
+        "noEmit": false
     },
     "include": ["src/**/*.ts", "test/**/*.ts"],
     "exclude": ["node_modules", "dist"]

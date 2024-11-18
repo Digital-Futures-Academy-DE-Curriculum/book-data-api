@@ -4,6 +4,9 @@ import { join, extname } from "path";
 function addJsExtension(dir) {
     readdirSync(dir).forEach((file) => {
         const fullPath = join(dir, file);
+        if (fullPath.includes("node_modules")) {
+            return; // Skip node_modules directory
+        }
         if (lstatSync(fullPath).isDirectory()) {
             addJsExtension(fullPath);
         } else if (extname(fullPath) === ".js") {

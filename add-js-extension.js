@@ -11,8 +11,9 @@ function addJsExtension(dir) {
             addJsExtension(fullPath);
         } else if (extname(fullPath) === ".js") {
             let content = readFileSync(fullPath, "utf8");
+            // Match only relative imports starting with ./ or ../
             content = content.replace(
-                /(import .* from ['"])(.*)(['"])/g,
+                /(import .* from ['"])(\.\/.*|..\/.*)(['"])/g,
                 "$1$2.js$3"
             );
             writeFileSync(fullPath, content, "utf8");

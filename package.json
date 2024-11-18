@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=dev nodemon",
-    "build": "tsc && tsc-alias",
-    "serve": "nodemon dist/index.js",
+    "build": "tsc && tsc-alias && node add-js-extension.js",
+    "serve": "NODE_ENV=prod nodemon dist/index.js",
     "test": "NODE_ENV=test mocha",
     "lint": "eslint 'src/**/*.{js,ts}'",
     "lint:fix": "eslint 'src/**/*.{js,ts}' --fix"

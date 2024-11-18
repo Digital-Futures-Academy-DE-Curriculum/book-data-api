@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import CategoriesService from "../services/Categories.service";
+import CategoriesService from "@services/Categories.service";
 
 export default class CategoriesController {
     #service: CategoriesService;

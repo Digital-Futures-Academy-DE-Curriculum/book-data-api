@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
-import { BookSchema } from "./Book.model";
-import ICategory from "./ICategory";
+import { BookSchema } from "@models/Book.model";
+import ICategory from "@models/ICategory";
 
 const CategorySchema = new Schema<ICategory>({
     category: { type: String, required: true },

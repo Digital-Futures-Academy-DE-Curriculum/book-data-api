@@ -1,4 +1,4 @@
-import IBook from "./IBook";
+import IBook from "@models/IBook";
 
 export default interface ICategory extends Document {
     category: string;

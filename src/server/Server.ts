@@ -3,9 +3,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { Server as HttpServer } from "http";
 
-import BooksToScrape from "../routes/BooksToScrape.routes";
-import Categories from "../routes/Categories.routes";
-import Category from "../routes/Category.routes";
+import BooksToScrape from "@routes/BooksToScrape.routes";
+import Categories from "@routes/Categories.routes";
+import Category from "@routes/Category.routes";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

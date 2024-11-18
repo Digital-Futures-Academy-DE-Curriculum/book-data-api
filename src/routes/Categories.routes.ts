@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import CategoriesController from "../controllers/Categories.controller";
+import CategoriesController from "@controllers/Categories.controller";
 
 export default class Categories {
     #router: Router;

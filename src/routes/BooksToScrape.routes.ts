@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import BooksToScrapeController from "../controllers/BooksToScrape.controller";
+import BooksToScrapeController from "@controllers/BooksToScrape.controller";
 
 export default class BooksToScrape {
     #router: Router;

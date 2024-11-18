@@ -1,7 +1,7 @@
-import ErrorMessages from "../constants/ErrorMessages";
-import Category from "../models/Category.model";
-import IBook from "../models/IBook";
-import ICategory from "../models/ICategory";
+import ErrorMessages from "@constants/ErrorMessages";
+import Category from "@models/Category.model";
+import IBook from "@models/IBook";
+import ICategory from "@models/ICategory";
 
 export default class CategoriesService {
     getCategories: () => Promise<ICategory[]> = async () => {

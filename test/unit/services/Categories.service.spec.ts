@@ -63,7 +63,7 @@ describe("CategoriesService Tests", () => {
 
             const result = await categoriesServiceInstance.getCategories();
 
-            expect(result).to.equal(resolvedCategories);
+            expect(result).to.deep.equal(resolvedCategories);
         });
 
         it("should throw an error if find errors out", async () => {

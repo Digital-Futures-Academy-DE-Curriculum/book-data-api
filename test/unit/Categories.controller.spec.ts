@@ -203,6 +203,81 @@ describe("CategoriesController Tests", () => {
     });
 
     describe("getCategoriesBookCountAndPrices", () => {
-        // TODO: Add tests for getCategoriesBookCountAndPrices
+        it("should return the object returned from the service", async () => {
+            // Arrange
+            const categoriesBookCountAndPrices = {
+                [testData[0].category as string]: {
+                    number_of_books: testData[0].number_of_books,
+                    book_prices:
+                        (testData[0].books?.map(
+                            (book) => book.price
+                        ) as number[]) || [],
+                },
+                [testData[1].category as string]: {
+                    number_of_books: testData[1].number_of_books,
+                    total_price:
+                        (testData[1].books?.map(
+                            (book) => book.price
+                        ) as number[]) || [],
+                },
+            };
+
+            (
+                services.getCategoriesBookCountAndPrices as sinon.SinonStub
+            ).resolves(categoriesBookCountAndPrices);
+
+            // Act
+            await controller.getCategoriesBookCountAndPrices(
+                req as Request,
+                res as Response
+            );
+
+            // Assert
+            assert.calledOnce(res.json as sinon.SinonStub);
+            assert.calledWith(
+                res.json as sinon.SinonStub,
+                categoriesBookCountAndPrices
+            );
+        });
+
+        it("should return 500 if the service throws an error", async () => {
+            // Arrange
+            (
+                services.getCategoriesBookCountAndPrices as sinon.SinonStub
+            ).rejects({
+                message: "Some error",
+            } as Error);
+
+            // Act
+            await controller.getCategoriesBookCountAndPrices(
+                req as Request,
+                res as Response
+            );
+
+            // Assert
+            assert.calledOnce(res.status as sinon.SinonStub);
+            assert.calledWith(res.status as sinon.SinonStub, 500);
+            assert.calledOnce(res.json as sinon.SinonStub);
+            assert.calledWith(res.json as sinon.SinonStub, {
+                message: "Some error",
+            });
+        });
+
+        it("should return an empty object if there are no categories found", async () => {
+            // Arrange
+            (
+                services.getCategoriesBookCountAndPrices as sinon.SinonStub
+            ).resolves({});
+
+            // Act
+            await controller.getCategoriesBookCountAndPrices(
+                req as Request,
+                res as Response
+            );
+
+            // Assert
+            assert.calledOnce(res.json as sinon.SinonStub);
+            assert.calledWith(res.json as sinon.SinonStub, {});
+        });
     });
 });

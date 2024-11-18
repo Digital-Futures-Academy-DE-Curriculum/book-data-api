@@ -187,4 +187,65 @@ describe("CategoryController Tests", () => {
             });
         });
     });
+
+    describe("getCategoryBookPrices", () => {
+        it("should call the service with the id in the request", async () => {
+            // Act
+            await controller.getCategoryBookPrices(
+                reqWithParams as Request,
+                res as Response
+            );
+            // Assert
+            assert.calledOnce(
+                services.getCategoryBookPrices as sinon.SinonStub
+            );
+            assert.calledWith(
+                services.getCategoryBookPrices as sinon.SinonStub,
+                validTestId
+            );
+        });
+
+        it("should return the object returned from the service", async () => {
+            // Arrange
+            const categoryBookPrices = {
+                [testData[0].category as string]: {
+                    number_of_books: testData[0].number_of_books,
+                    book_prices:
+                        (testData[0].books?.map(
+                            (book) => book.price
+                        ) as number[]) || [],
+                },
+            };
+            (services.getCategoryBookPrices as sinon.SinonStub).resolves(
+                categoryBookPrices
+            );
+            // Act
+            await controller.getCategoryBookPrices(
+                reqWithParams as Request,
+                res as Response
+            );
+            // Assert
+            assert.calledOnce(res.json as sinon.SinonStub);
+            assert.calledWith(res.json as sinon.SinonStub, categoryBookPrices);
+        });
+
+        it("should return 500 if the service throws an error", async () => {
+            // Arrange
+            (services.getCategoryBookPrices as sinon.SinonStub).rejects({
+                message: "Some error",
+            } as Error);
+            // Act
+            await controller.getCategoryBookPrices(
+                reqWithParams as Request,
+                res as Response
+            );
+            // Assert
+            assert.calledOnce(res.status as sinon.SinonStub);
+            assert.calledWith(res.status as sinon.SinonStub, 500);
+            assert.calledOnce(res.json as sinon.SinonStub);
+            assert.calledWith(res.json as sinon.SinonStub, {
+                message: "Some error",
+            });
+        });
+    });
 });

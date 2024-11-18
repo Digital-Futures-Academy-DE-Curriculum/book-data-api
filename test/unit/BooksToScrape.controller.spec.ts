@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import fs from "fs";
+import fs from "fs/promises";
 import { describe, it, beforeEach } from "mocha";
 import path from "path";
 import sinon, { assert } from "sinon";
@@ -25,36 +25,27 @@ describe("BooksToScrapeController Tests", () => {
     });
 
     describe("getHomePage tests", () => {
-        it("should send the index.html file", () => {
+        it("should send the index.html file", async () => {
             // Arrange
             const __filename = fileURLToPath(import.meta.url);
             const __dirname = path.dirname(__filename);
-            const HOME_PAGE_PATH: string = "../../public/index.html";
+            const HOME_PAGE_PATH = "../../public/index.html";
             const filePath = path.join(__dirname, HOME_PAGE_PATH);
-            sinon.stub(fs, "access").callsFake((path, mode, callback) => {
-                callback(null); // Simulate file exists
-            });
-
+            sinon.stub(fs, "access").resolves();
             // Act
-            controller.getHomePage(req as Request, res as Response);
-
+            await controller.getHomePage(req as Request, res as Response);
             // Assert
             assert.calledOnce(res.sendFile as sinon.SinonStub);
             assert.calledWith(res.sendFile as sinon.SinonStub, filePath);
-
             // Restore the stubbed method
             (fs.access as unknown as sinon.SinonStub).restore();
         });
 
-        it("should return 404 if the file does not exist", () => {
+        it("should return 404 if the file does not exist", async () => {
             // Arrange
-            sinon.stub(fs, "access").callsFake((path, mode, callback) => {
-                callback(new Error("File not found")); // Simulate file does not exist
-            });
-
+            sinon.stub(fs, "access").rejects(new Error("File not found"));
             // Act
-            controller.getHomePage(req as Request, res as Response);
-
+            await controller.getHomePage(req as Request, res as Response);
             // Assert
             sinon.assert.calledOnce(res.status as sinon.SinonStub);
             sinon.assert.calledWith(res.status as sinon.SinonStub, 404);
@@ -63,13 +54,8 @@ describe("BooksToScrapeController Tests", () => {
                 res.send as sinon.SinonStub,
                 ErrorMessages.FILE_NOT_FOUND
             );
-
             // Restore the stubbed method
             (fs.access as unknown as sinon.SinonStub).restore();
         });
     });
-
-    // TODO: Add tests for getBookPrices
-    // TODO: Add tests for getCategoryBookPrices
-    // TODO: Add tests for SERVICES
 });

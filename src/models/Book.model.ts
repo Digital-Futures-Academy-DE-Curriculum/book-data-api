@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-import IBook from "@models/IBook";
+import IBook from "../models/IBook.js";
 
 const BookSchema = new Schema<IBook>({
     title: { type: String, required: true },

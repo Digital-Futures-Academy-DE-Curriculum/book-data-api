@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=dev nodemon",
-    "build": "tsc && tsc-alias",
+    "build": "tsc",
     "serve": "NODE_ENV=prod nodemon dist/index.js",
     "test": "NODE_ENV=test mocha",
     "lint": "eslint 'src/**/*.{js,ts}'",
@@ -38,7 +38,6 @@
     "globals": "^15.12.0",
     "mocha": "^10.8.2",
     "sinon": "^19.0.2",
-    "tsc-alias": "^1.8.10",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.13.0"

@@ -11,19 +11,7 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "types": ["node"],
-        "allowSyntheticDefaultImports": true,
-        "noEmit": false,
-        "baseUrl": ".",
-        "paths": {
-            "@config/*": ["src/config/*"],
-            "@constants/*": ["src/constants/*"],
-            "@controllers/*": ["src/controllers/*"],
-            "@db/*": ["src/db/*"],
-            "@models/*": ["src/models/*"],
-            "@routes/*": ["src/routes/*"],
-            "@server/*": ["src/server/*"],
-            "@services/*": ["src/services/*"]
-        }
+        "allowSyntheticDefaultImports": true
     },
     "include": ["src/**/*.ts", "test/**/*.ts"],
     "exclude": ["node_modules", "dist"]

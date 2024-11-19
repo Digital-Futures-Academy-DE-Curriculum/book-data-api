@@ -1,8 +1,8 @@
 import process from "process";
 
-import Config from "@config/Config";
-import Database from "@db/Database";
-import Server from "@server/Server";
+import Config from "./config/Config.js";
+import Database from "./db/Database.js";
+import Server from "./server/Server.js";
 
 Config.load();
 

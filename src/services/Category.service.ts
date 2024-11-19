@@ -1,6 +1,6 @@
-import ErrorMessages from "@constants/ErrorMessages";
-import Category from "@models/Category.model";
-import IBook from "@models/IBook";
+import ErrorMessages from "../constants/ErrorMessages.js";
+import Category from "../models/Category.model.js";
+import IBook from "../models/IBook.js";
 
 export default class CategoryService {
     getCategoryBookCount: (categoryId: string) => Promise<{

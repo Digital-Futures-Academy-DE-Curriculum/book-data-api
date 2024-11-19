@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 
-import CategoryService from "../services/Category.service";
+import CategoryService from "../services/Category.service.js";
 
-import ErrorMessages from "../constants/ErrorMessages";
+import ErrorMessages from "../constants/ErrorMessages.js";
 
 export default class CategoryController {
     #service: CategoryService;

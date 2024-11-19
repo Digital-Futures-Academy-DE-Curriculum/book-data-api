@@ -1,5 +1,3 @@
-import process from "process";
-
 import Config from "./config/Config.js";
 import Database from "./db/Database.js";
 import Server from "./server/Server.js";

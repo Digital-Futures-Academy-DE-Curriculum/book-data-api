@@ -6,7 +6,7 @@ Config.load();
 
 const PORT: number | undefined = process.env.PORT
     ? parseInt(process.env.PORT)
-    : undefined;
+    : 10000;
 const HOST: string | undefined = process.env.HOST;
 const DB_URI: string | undefined = process.env.DB_URI;
 

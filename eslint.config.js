@@ -22,6 +22,10 @@ export default [
         plugins: {
             "@typescript-eslint": tseslint,
         },
+        env: {
+            node: true,
+            es2021: true,
+        },
         rules: {
             ...pluginJs.configs.recommended.rules,
             ...tseslint.configs.recommended.rules,
